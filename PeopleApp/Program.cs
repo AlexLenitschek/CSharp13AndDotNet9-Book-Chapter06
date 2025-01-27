@@ -57,4 +57,62 @@ for (int i = 0; i < lamech.Children.Count; i++)
       arg0: lamech.Name, arg1: i,
       arg2: lamech.Children[i].Name);
 }
+
+WriteLine();
+#endregion
+
+#region Working with non-generic types
+
+// Non-generic lookup collection.
+System.Collections.Hashtable lookupObject = new();
+lookupObject.Add(key: 1, value: "Alpha");
+lookupObject.Add(key: 2, value: "Beta");
+lookupObject.Add(key: 3, value: "Gamma");
+lookupObject.Add(key: harry, value: "Delta");
+
+int key = 2; // Look up the value that has 2 as its key.
+
+WriteLine(format: "Key {0} has value: {1}",
+  arg0: key,
+  arg1: lookupObject[key]);
+
+// Look up the value that has harry as its key.
+WriteLine(format: "Key {0} has value: {1}",
+  arg0: harry,
+  arg1: lookupObject[harry]);
+
+WriteLine();
+#endregion
+
+#region Working with generic types.
+// Define a generic lookup collection.
+Dictionary<int, string> lookupIntString = new(); 
+// System.Collections.Generic.Dictionary<TKey, TValue> is implicitly and globally imported by default.
+lookupIntString.Add(key: 1, value: "Alpha");
+lookupIntString.Add(key: 2, value: "Beta");
+lookupIntString.Add(key: 3, value: "Gamma");
+lookupIntString.Add(key: 4, value: "Delta");
+
+key = 3;
+
+WriteLine(format: "Key {0} has value: {1}",
+  arg0: key,
+  arg1: lookupIntString[key]);
+
+WriteLine();
+#endregion
+
+#region Defining and handling delegates
+
+// Assign the method(s) to the Shout event delegate. Shout Initially null.
+harry.Shout += Harry_Shout;
+harry.Shout += Harry_Shout_2;
+
+// Call the Poke method that eventually raises the Shout event.
+harry.Poke();
+harry.Poke();
+harry.Poke();
+harry.Poke();
+
+WriteLine();
 #endregion
