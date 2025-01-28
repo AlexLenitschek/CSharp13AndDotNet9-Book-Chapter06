@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacktLibrary", "PacktLibrary\PacktLibrary.csproj", "{FF4EB886-C23E-4B29-AF3C-2B976AFFFA9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleApp", "PeopleApp\PeopleApp.csproj", "{7EBD25FD-69A2-4453-94CD-1F73E5D444FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullHandling", "NullHandling\NullHandling.csproj", "{66D48006-8832-4655-9E0C-B3D1ED807672}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7EBD25FD-69A2-4453-94CD-1F73E5D444FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EBD25FD-69A2-4453-94CD-1F73E5D444FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EBD25FD-69A2-4453-94CD-1F73E5D444FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D48006-8832-4655-9E0C-B3D1ED807672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D48006-8832-4655-9E0C-B3D1ED807672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D48006-8832-4655-9E0C-B3D1ED807672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D48006-8832-4655-9E0C-B3D1ED807672}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
