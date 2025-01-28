@@ -116,3 +116,26 @@ harry.Poke();
 
 WriteLine();
 #endregion
+
+#region Comparing objects when sorting - Interface
+Person?[] people = {
+    null,
+    new() { Name = "Simon" },
+    new() { Name = "Jenny" },
+    new() { Name = "Adam" },
+    new() { Name = null },
+    new() { Name = "Richard" }
+};
+
+OutputPeopleNames(people, "Initial list of people:");
+
+Array.Sort(people);
+
+OutputPeopleNames(people, "After sorting using Person's IComparable implementation:");
+
+Array.Sort(people, new PersonComparer());
+
+OutputPeopleNames(people, "After sorting using PersonComparer's IComparer implementation:");
+
+WriteLine();
+#endregion

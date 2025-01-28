@@ -1,6 +1,8 @@
-﻿namespace Packt.Shared;
+﻿using System.ComponentModel.Design;
 
-public class Person
+namespace Packt.Shared;
+
+public class Person : IComparable<Person?>
 {
     #region Properties
 
@@ -21,7 +23,7 @@ public class Person
     #region Methods
     public void WriteToConsole()
     {
-        Console.WriteLine($"{Name} was born on a {Born:dddd}.");
+        WriteLine($"{Name} was born on a {Born:dddd}.");
     }
 
     public void WriteChildrenToConsole()
@@ -155,5 +157,42 @@ public class Person
         }
     }
 
+
+    #endregion
+
+    #region Implementation of CompareTo for IComparable<Person?> to work.
+    public int CompareTo(Person? other)
+    {
+        int position;
+        if (other is not null)
+        {
+            if ((Name is not null) && (other.Name is not null))
+            {
+                // If both Name values are not null, then use the string implemantation of CompareTo.
+                position = Name.CompareTo(other.Name);
+            }
+            else if ((Name is not null) && (other.Name is null))
+            {
+                position = -1; // this person precedes other person.
+            }
+            else if ((Name is null) && (other.Name is not null))
+            {
+                position = 1; // this person follows other person.
+            }
+            else
+            {
+                position = 0; // this person and other person are equivalent.
+            }
+        }
+        else if (other is null)
+        {
+            position = -1; // this person precedes other person.
+        }
+        else // this and other are both null.
+        {
+            position = 0; // this person and other person are at same position.
+        }
+        return position;
+    }
     #endregion
 }
