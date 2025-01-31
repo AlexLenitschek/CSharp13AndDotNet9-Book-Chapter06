@@ -139,3 +139,79 @@ OutputPeopleNames(people, "After sorting using PersonComparer's IComparer implem
 
 WriteLine();
 #endregion
+
+#region Inheriting from classes
+Employee john = new()
+{
+    Name = "John",
+    Born = new(year: 1990, month: 7, day: 28, hour: 0, minute: 0, second: 0, offset: TimeSpan.Zero)
+};
+john.WriteToConsole();
+
+john.EmployeeCode = "JJ001";
+john.HireDate = new(year: 2014, month: 11, day: 23);
+WriteLine($"{john.Name} was hired on {john.HireDate:yyyy-MM-dd}");
+
+WriteLine();
+#endregion
+
+#region Overriding members
+WriteLine(john.ToString());
+
+
+WriteLine();
+#endregion
+
+#region Understanding polymorphism
+Employee aliceInEmployee = new() { Name = "Alice", EmployeeCode = "AA123" };
+
+Person aliceInPerson = aliceInEmployee;
+aliceInEmployee.WriteToConsole();
+aliceInPerson.WriteToConsole();
+WriteLine(aliceInEmployee.ToString());
+WriteLine(aliceInPerson.ToString());
+
+WriteLine();
+#endregion
+
+#region Implicit & Explicit Casting
+//Person ImplicitAlice = aliceInEmployee; // Derived types can be stored in their base type (or its base's base type, amd so on.)
+Employee explicitAlice1 = (Employee)aliceInPerson; // Explicit casts need the type to be explicitly mentioned.
+// Could result in an InvalidCastException if the type is not compatible. Do the following codeblock to avoid it:
+#endregion
+
+
+// Use the is and as keywords to prevent throwing exceptions when casting between derived types. Prevents the need to write try-catch statements for InvalidCastException.
+#region Using the "is" keyword to check a type
+if (aliceInPerson is Employee)
+
+{
+    WriteLine($"{nameof(aliceInPerson)} is an Employee.");
+    
+    Employee explicitAlice2 = (Employee)aliceInPerson;
+
+    // Safely do something with explicitAlice2.
+}
+
+if (aliceInPerson is Employee explicitAlice3) // Same as above but using declaration pattern. Checks and Casts in one line.
+{
+    WriteLine($"{nameof(aliceInPerson)} is an Employee.");
+
+    // Safely do something with explicitAlice2.
+}
+
+WriteLine();
+#endregion
+
+#region Using the "as" keyword to cast a type
+Employee? aliceAsEmployee = aliceInPerson as Employee; // If the cast fails, the result is null.
+
+if (aliceAsEmployee is not null)
+{
+    WriteLine($"{nameof(aliceInPerson)} as an Employee.");
+
+    // Safely do something with aliceAsEmployee.
+}
+
+WriteLine();
+#endregion

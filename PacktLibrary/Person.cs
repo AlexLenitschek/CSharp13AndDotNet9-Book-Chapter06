@@ -195,4 +195,11 @@ public class Person : IComparable<Person?>
         return position;
     }
     #endregion
+
+    #region Overridden Methods
+    public override string ToString()
+    {
+        return $"{Name} is a {base.ToString()}";
+    }
+    #endregion
 }
