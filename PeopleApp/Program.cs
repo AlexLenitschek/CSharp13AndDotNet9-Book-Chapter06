@@ -61,6 +61,7 @@ for (int i = 0; i < lamech.Children.Count; i++)
 WriteLine();
 #endregion
 
+
 #region Working with non-generic types
 
 // Non-generic lookup collection.
@@ -84,6 +85,7 @@ WriteLine(format: "Key {0} has value: {1}",
 WriteLine();
 #endregion
 
+
 #region Working with generic types.
 // Define a generic lookup collection.
 Dictionary<int, string> lookupIntString = new(); 
@@ -102,6 +104,7 @@ WriteLine(format: "Key {0} has value: {1}",
 WriteLine();
 #endregion
 
+
 #region Defining and handling delegates
 
 // Assign the method(s) to the Shout event delegate. Shout Initially null.
@@ -116,6 +119,7 @@ harry.Poke();
 
 WriteLine();
 #endregion
+
 
 #region Comparing objects when sorting - Interface
 Person?[] people = {
@@ -140,6 +144,7 @@ OutputPeopleNames(people, "After sorting using PersonComparer's IComparer implem
 WriteLine();
 #endregion
 
+
 #region Inheriting from classes
 Employee john = new()
 {
@@ -162,6 +167,7 @@ WriteLine(john.ToString());
 WriteLine();
 #endregion
 
+
 #region Understanding polymorphism
 Employee aliceInEmployee = new() { Name = "Alice", EmployeeCode = "AA123" };
 
@@ -173,6 +179,7 @@ WriteLine(aliceInPerson.ToString());
 
 WriteLine();
 #endregion
+
 
 #region Implicit & Explicit Casting
 //Person ImplicitAlice = aliceInEmployee; // Derived types can be stored in their base type (or its base's base type, amd so on.)
@@ -203,6 +210,7 @@ if (aliceInPerson is Employee explicitAlice3) // Same as above but using declara
 WriteLine();
 #endregion
 
+
 #region Using the "as" keyword to cast a type
 Employee? aliceAsEmployee = aliceInPerson as Employee; // If the cast fails, the result is null.
 
@@ -214,4 +222,62 @@ if (aliceAsEmployee is not null)
 }
 
 WriteLine();
+#endregion
+
+
+#region Inheriting and extending .NET Types - Inheriting Exception
+try
+{
+    john.TimeTravel(when: new(1990, 12, 31));
+    john.TimeTravel(when: new(1950, 12, 25));
+}
+catch (PersonException ex)
+{
+    WriteLine(ex.Message);
+}
+
+WriteLine();
+#endregion
+
+
+#region Using static methods to reuse functionality
+string email1 = "pamela@test.com";
+string email2 = "ian&test.com";
+
+WriteLine("{0} is a valid email address: {1}", arg0: email1, arg1: StringExtensions.IsValidEmail(email1));
+WriteLine("{0} is a valid email address: {1}", arg0: email2, arg1: StringExtensions.IsValidEmail(email2));
+
+WriteLine();
+#endregion
+
+
+#region Using extension methods to reuse functionality
+WriteLine("{0} is a valid email address: {1}", email1, email1.IsValidEmail());
+WriteLine("{0} is a valid email address: {1}", email2, email2.IsValidEmail());
+
+
+WriteLine();
+#endregion
+
+
+#region Mutabilityy and records.
+C1 c1 = new() { Name = "Bob" };
+c1.Name = "Bill"; // This is allowed because the class is mutable.
+
+C2 c2 = new(Name: "Bob" );
+//c2.Name = "Bill";
+// Init-only property or indexer 'C2.Name' can only be assigned in an object initializer,
+// or on 'this' or 'base' in an instance constructor or an 'init' accessor.
+
+S1 s1 = new() { Name = "Bob" };
+s1.Name = "Bill";
+
+S2 s2 = new(Name: "Bob");
+s2.Name = "Bill";
+
+S3 s3 = new(Name: "Bob");
+//s3.Name = "Bill"; 
+// Init-only property or indexer 'S3.Name' can only be assigned in an object initializer,
+// or on 'this' or 'base' in an instance constructor or an 'init' accessor.
+
 #endregion
