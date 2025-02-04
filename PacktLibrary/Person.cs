@@ -111,7 +111,22 @@ public class Person : IComparable<Person?>
     {
         return Procreate(this, partner);
     }
+    
+    public void TimeTravel(DateTime when)
+    {
+        if (when <= Born)
+        {
+            throw new PersonException("If you travel back in time to a date earlier than your own birth then the universe will explode!");
+        }
+        else
+        {
+            WriteLine($"Welcome to {when:yyyy}!");
+        }
+    }
+
     #endregion
+
+
 
     #region Operators
     // IMPORTANT: Operators are not visible in IntelliSense via the dot (.). For each operator
