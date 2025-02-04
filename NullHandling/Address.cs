@@ -8,13 +8,12 @@ public class Address
     public string Region;
 
 
+    // Call the default parameterless constructor to ensure that Region is also set.
     public Address()
     {
         City = string.Empty;
         Region = string.Empty;
     }
-
-    // Call the default parameterless constructor to ensure that Region is also set.
 
     public Address(string city) : this()
     {

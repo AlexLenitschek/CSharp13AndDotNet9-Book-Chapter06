@@ -12,7 +12,7 @@ namespace PacktLibrary
         void Pause();
         void Stop()
         {
-            // Default Implementation
+            // Default Implementation - Looked down upon, so avoid if possible.
             WriteLine("Default implementation of Stop.");
         }
     }

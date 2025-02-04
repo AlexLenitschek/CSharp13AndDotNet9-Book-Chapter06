@@ -1,5 +1,7 @@
 ﻿namespace Packt.Shared;
 
+// Sometimes you are not capable of adding methods to some Types, for example if it is part of an imported library.
+// You can still add functionality like the ability to compare to such types as can be seen in the following.
 public class PersonComparer : IComparer<Person?>
 {
     public int Compare(Person? x, Person? y)
